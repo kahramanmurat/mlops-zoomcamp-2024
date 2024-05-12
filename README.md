@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MLOps Zoomcamp
 
 <p align="center">
@@ -219,3 +220,6 @@ Thanks to the course sponsors for making it possible to create this course
 Do you want to support our course and our community? Reach out to [alexey@datatalks.club](alexey@datatalks.club)
 
 
+=======
+# mlops-zoomcamp-2024
+>>>>>>> origin/main

@@ -39,6 +39,10 @@ def train_and_log_model(data_path, params):
         mlflow.log_metric("val_rmse", val_rmse)
         test_rmse = mean_squared_error(y_test, rf.predict(X_test), squared=False)
         mlflow.log_metric("test_rmse", test_rmse)
+        
+        # Return the run ID and test RMSE for later comparison
+        run_id = mlflow.active_run().info.run_id
+        return run_id, test_rmse
 
 
 @click.command()
@@ -65,15 +69,21 @@ def run_register_model(data_path: str, top_n: int):
         max_results=top_n,
         order_by=["metrics.rmse ASC"]
     )
-    for run in runs:
-        train_and_log_model(data_path=data_path, params=run.data.params)
 
-    # Select the model with the lowest test RMSE
-    experiment = client.get_experiment_by_name(EXPERIMENT_NAME)
-    # best_run = client.search_runs( ...  )[0]
+    best_run_id = None
+    best_test_rmse = float('inf')
+
+    for run in runs:
+        run_id, test_rmse = train_and_log_model(data_path=data_path, params=run.data.params)
+        if test_rmse < best_test_rmse:
+            best_test_rmse = test_rmse
+            best_run_id = run_id
 
     # Register the best model
-    # mlflow.register_model( ... )
+    if best_run_id:
+        model_uri = f"runs:/{best_run_id}/model"
+        model_name = "RandomForestRegressorBestModel"
+        mlflow.register_model(model_uri=model_uri, name=model_name)
 
 
 if __name__ == '__main__':

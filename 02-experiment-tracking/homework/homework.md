@@ -14,10 +14,9 @@ Once you installed the package, run the command `mlflow --version` and check the
 
 What's the version that you have?
 
-bash"""
+```bash
 conda create -n mlflow_env python=3.9
 conda activate mlflow_env
-"""
 
 
 

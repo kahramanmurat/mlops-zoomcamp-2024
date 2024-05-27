@@ -14,12 +14,20 @@ Once you installed the package, run the command `mlflow --version` and check the
 
 What's the version that you have?
 
+### Solution Q1:
+
 ```bash
 conda create -n mlflow_env python=3.9
 conda activate mlflow_env
 ```
-
-
+```bash
+pip install -r requirements.txt
+```
+```bash
+mlflow --version
+```
+>answer:
+mlflow, version 2.13.0
 
 ## Q2. Download and preprocess the data
 

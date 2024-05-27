@@ -57,6 +57,8 @@ How many files were saved to `OUTPUT_FOLDER`?
 * 4
 * 7
 
+### Solution
+> answer: 4 files dv.pkl  test.pkl  train.pkl  val.pkl
 
 ## Q3. Train a model with autolog
 

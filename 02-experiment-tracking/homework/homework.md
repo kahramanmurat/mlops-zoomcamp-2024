@@ -108,6 +108,20 @@ In addition to `backend-store-uri`, what else do you need to pass to properly co
 * `artifacts-only`
 * `artifacts-destination`
 
+### Solution Q4:
+
+```bash
+mkdir -p ./artifacts
+```
+
+```
+mlflow server \
+    --backend-store-uri sqlite:///mlruns/mlflow.db \
+    --default-artifact-root ./artifacts \
+    --host 0.0.0.0 \
+    --port 5000
+```
+
 
 ## Q5. Tune model hyperparameters
 
@@ -131,6 +145,9 @@ What's the best validation RMSE that you got?
 * 5.335
 * 5.818
 * 6.336
+
+### Solution Q5:
+>answer: best RMSE: 5.335
 
 
 ## Q6. Promote the best model to the model registry

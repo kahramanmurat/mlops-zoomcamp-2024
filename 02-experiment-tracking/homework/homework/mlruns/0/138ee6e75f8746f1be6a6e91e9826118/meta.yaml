@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ubuntu/mlops-zoomcamp/02-experiment-tracking/homework/homework/mlruns/0/138ee6e75f8746f1be6a6e91e9826118/artifacts
+end_time: 1716776833242
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 138ee6e75f8746f1be6a6e91e9826118
+run_name: nosy-grub-892
+run_uuid: 138ee6e75f8746f1be6a6e91e9826118
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716776832798
+status: 3
+tags: []
+user_id: ubuntu

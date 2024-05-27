@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ubuntu/mlops-zoomcamp/02-experiment-tracking/homework/homework/mlruns/0/d59d82778e7349c89741cf1307d0f06e/artifacts
+end_time: 1716777337488
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d59d82778e7349c89741cf1307d0f06e
+run_name: masked-flea-890
+run_uuid: d59d82778e7349c89741cf1307d0f06e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716777319815
+status: 3
+tags: []
+user_id: ubuntu

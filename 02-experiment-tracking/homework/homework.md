@@ -57,7 +57,7 @@ How many files were saved to `OUTPUT_FOLDER`?
 * 4
 * 7
 
-### Solution
+### Solution Q2
 > answer: 4 files dv.pkl  test.pkl  train.pkl  val.pkl
 
 ## Q3. Train a model with autolog
@@ -85,6 +85,10 @@ What is the value of the `min_samples_split` parameter:
 * 8
 * 10
 
+### Solution Q3
+
+>answer:
+min_samples_split=2
 
 ## Q4. Launch the tracking server locally
 

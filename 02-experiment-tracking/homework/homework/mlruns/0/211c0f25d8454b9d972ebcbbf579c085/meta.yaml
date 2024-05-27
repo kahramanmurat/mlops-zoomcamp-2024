@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ubuntu/mlops-zoomcamp/02-experiment-tracking/homework/homework/mlruns/0/211c0f25d8454b9d972ebcbbf579c085/artifacts
+end_time: 1716777337892
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 211c0f25d8454b9d972ebcbbf579c085
+run_name: secretive-boar-166
+run_uuid: 211c0f25d8454b9d972ebcbbf579c085
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716777337882
+status: 3
+tags: []
+user_id: ubuntu

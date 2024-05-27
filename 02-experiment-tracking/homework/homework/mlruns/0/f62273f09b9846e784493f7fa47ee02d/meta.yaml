@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ubuntu/mlops-zoomcamp/02-experiment-tracking/homework/homework/mlruns/0/f62273f09b9846e784493f7fa47ee02d/artifacts
+end_time: 1716777526739
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f62273f09b9846e784493f7fa47ee02d
+run_name: worried-kit-172
+run_uuid: f62273f09b9846e784493f7fa47ee02d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716777508452
+status: 3
+tags: []
+user_id: ubuntu

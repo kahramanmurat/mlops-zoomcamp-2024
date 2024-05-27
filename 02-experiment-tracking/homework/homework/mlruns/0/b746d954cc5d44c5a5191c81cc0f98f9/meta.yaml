@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ubuntu/mlops-zoomcamp/02-experiment-tracking/homework/homework/mlruns/0/b746d954cc5d44c5a5191c81cc0f98f9/artifacts
+end_time: 1716777319812
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b746d954cc5d44c5a5191c81cc0f98f9
+run_name: invincible-elk-225
+run_uuid: b746d954cc5d44c5a5191c81cc0f98f9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716777319548
+status: 3
+tags: []
+user_id: ubuntu

@@ -16,7 +16,7 @@ What's the version that you have?
 
 ```bash
 conda create -n mlflow_env python=3.9
-conda activate mlflow_env
+conda activate mlflow_env"""
 
 
 

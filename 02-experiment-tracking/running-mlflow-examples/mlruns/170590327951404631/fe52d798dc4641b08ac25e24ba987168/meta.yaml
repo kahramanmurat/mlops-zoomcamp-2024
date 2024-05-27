@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ubuntu/mlops-zoomcamp/02-experiment-tracking/running-mlflow-examples/mlruns/170590327951404631/fe52d798dc4641b08ac25e24ba987168/artifacts
+end_time: 1716620507349
+entry_point_name: ''
+experiment_id: '170590327951404631'
+lifecycle_stage: active
+run_id: fe52d798dc4641b08ac25e24ba987168
+run_name: receptive-croc-853
+run_uuid: fe52d798dc4641b08ac25e24ba987168
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716620504433
+status: 3
+tags: []
+user_id: ubuntu

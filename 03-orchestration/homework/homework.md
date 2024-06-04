@@ -24,6 +24,24 @@ How many lines are in the created `metadata.yaml` file?
 Answer:
 ```55 lines```
 
+## Question 3. Creating a pipeline
+
+Let's create an ingestion code block.
+
+In this block, we will read the March 2023 Yellow taxi trips data.
+
+How many records did we load? 
+
+- 3,003,766
+- 3,203,766
+- 3,403,766 - correct
+- 3,603,766
+
+Answer:
+```3403766```
+
+Code:
+
 ```
 import requests
 from io import BytesIO
@@ -60,22 +78,6 @@ def ingest_files(**kwargs) -> pd.DataFrame:
     print(f"Total records loaded: {result_df.shape[0]}")
     return result_df
 ```
-
-## Question 3. Creating a pipeline
-
-Let's create an ingestion code block.
-
-In this block, we will read the March 2023 Yellow taxi trips data.
-
-How many records did we load? 
-
-- 3,003,766
-- 3,203,766
-- 3,403,766 - correct
-- 3,603,766
-
-Answer:
-```3403766```
 
 
 ## Question 4. Data preparation

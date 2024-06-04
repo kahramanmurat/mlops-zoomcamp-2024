@@ -24,6 +24,43 @@ How many lines are in the created `metadata.yaml` file?
 Answer:
 ```55 lines```
 
+code```
+import requests
+from io import BytesIO
+from typing import List
+
+import pandas as pd
+
+if 'data_loader' not in globals():
+    from mage_ai.data_preparation.decorators import data_loader
+
+
+@data_loader
+def ingest_files(**kwargs) -> pd.DataFrame:
+    dfs: List[pd.DataFrame] = []
+
+    for year, months in [(2023, (3, 4))]:  # Update range to ensure it includes March
+        for i in range(*months):
+            print(f"Fetching data for {year}-{i:02d}")
+            response = requests.get(
+                f'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{year}-{i:02d}.parquet'
+            )
+
+            if response.status_code != 200:
+                raise Exception(f"Failed to fetch data for {year}-{i:02d}: {response.text}")
+
+            df = pd.read_parquet(BytesIO(response.content))
+            print(f"Data shape for {year}-{i:02d}: {df.shape}")
+            dfs.append(df)
+
+    if not dfs:
+        raise ValueError("No dataframes to concatenate")
+
+    result_df = pd.concat(dfs)
+    print(f"Total records loaded: {result_df.shape[0]}")
+    return result_df
+```
+
 ## Question 3. Creating a pipeline
 
 Let's create an ingestion code block.

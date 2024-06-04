@@ -7,4 +7,5 @@ What's the version of Mage we run?
 
 (You can see it in the UI)
 
+Answer:
 ```v0.9.70```

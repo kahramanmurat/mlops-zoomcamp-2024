@@ -171,3 +171,95 @@ def test_output(output, *args) -> None:
     assert 'duration' in output.columns, 'The output DataFrame does not contain the "duration" column'
     assert output.shape[0] > 0, 'The output DataFrame is empty'
 ```
+
+## Question 5. Train a model
+
+We will now train a linear regression model using the same code as in homework 1
+
+* Fit a dict vectorizer
+* Train a linear regression with default parameres 
+* Use pick up and drop off locations separately, don't create a combination feature
+
+Let's now use it in the pipeline. We will need to create another transformation block, and return both the dict vectorizer and the model
+
+What's the intercept of the model? 
+
+Hint: print the `intercept_` field in the code block
+
+- 21.77
+- 24.77
+- 27.77
+- 31.77
+
+## Question 6. Register the model 
+
+The model is trained, so let's save it with MLFlow.
+
+If you run mage with docker-compose, stop it with Ctrl+C or 
+
+```bash
+docker-compose down
+```
+
+Let's create a dockerfile for mlflow, e.g. `mlflow.dockerfile`:
+
+```dockerfile
+FROM python:3.10-slim
+
+RUN pip install mlflow==2.12.1
+
+EXPOSE 5000
+
+CMD [ \
+    "mlflow", "server", \
+    "--backend-store-uri", "sqlite:///home/mlflow/mlflow.db", \
+    "--host", "0.0.0.0", \
+    "--port", "5000" \
+]
+```
+
+And add it to the docker-compose.yaml:
+
+```yaml
+  mlflow:
+    build:
+      context: .
+      dockerfile: mlflow.dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - "${PWD}/mlflow:/home/mlflow/"
+    networks:
+      - app-network
+```
+
+Note that `app-network` is the same network as for mage and postgre containers.
+If you use a different compose file, adjust it.
+
+We should already have `mlflow==2.12.1` in requirements.txt in the mage project we created for the module. If you're starting from scratch, add it to your requirements.
+
+Next, start the compose again and create a data exporter block.
+
+In the block, we
+
+* Log the model (linear regression)
+* Save and log the artifact (dict vectorizer)
+
+If you used the suggested docker-compose snippet, mlflow should be accessible at `http://mlflow:5000`.
+
+Find the logged model, and find MLModel file. What's the size of the model? (`model_size_bytes` field):
+
+* 14,534
+* 9,534
+* 4,534
+* 1,534
+
+> Note: typically we do two last steps in one code block 
+
+
+## Submit the results
+
+* Submit your results here: https://courses.datatalks.club/mlops-zoomcamp-2024/homework/hw3
+* If your answer doesn't match options exactly, select the closest one
+
+

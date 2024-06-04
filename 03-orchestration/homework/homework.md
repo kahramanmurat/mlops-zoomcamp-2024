@@ -9,3 +9,17 @@ What's the version of Mage we run?
 
 Answer:
 ```v0.9.70```
+
+## Question 2. Creating a project
+
+Now let's create a new project. We can call it "homework_03", for example.
+
+How many lines are in the created `metadata.yaml` file? 
+
+- 35
+- 45
+- 55
+- 65
+
+Answer:
+```55 lines```

@@ -24,7 +24,7 @@ How many lines are in the created `metadata.yaml` file?
 Answer:
 ```55 lines```
 
-code```
+```
 import requests
 from io import BytesIO
 from typing import List

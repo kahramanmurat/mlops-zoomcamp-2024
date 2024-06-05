@@ -42,7 +42,7 @@ Answer:
 
 Code:
 
-```
+```python
 import requests
 from io import BytesIO
 from typing import List
@@ -120,7 +120,7 @@ Answer:
 ```3316216```
 
 Code:
-```
+```python
 import pandas as pd
 
 if 'transformer' not in globals():
@@ -195,7 +195,7 @@ Answer:
 ```24.77```
 
 Code:
-```
+```python
 import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LinearRegression
@@ -308,7 +308,7 @@ Answer:
 ```4,534```
 
 Code:
-```
+```python
 import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LinearRegression

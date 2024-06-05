@@ -307,6 +307,59 @@ Find the logged model, and find MLModel file. What's the size of the model? (`mo
 Answer:
 ```4,534```
 
+Code:
+```import pandas as pd
+from sklearn.feature_extraction import DictVectorizer
+from sklearn.linear_model import LinearRegression
+import mlflow
+import mlflow.sklearn
+import joblib
+import os
+
+if 'data_exporter' not in globals():
+    from mage_ai.data_preparation.decorators import data_exporter
+
+@data_exporter
+def export_data(data, *args, **kwargs):
+    """
+    Exports data to some source.
+
+    Args:
+        data: The output from the upstream parent block
+        args: The output from any additional upstream blocks (if applicable)
+
+    Output (optional):
+        Optionally return any object and it'll be logged and
+        displayed when inspecting the block run.
+    """
+    # Specify your data exporting logic here
+    dv, model = data
+    
+    # Set the experiment name
+    experiment_name = "my_new_experiment"  # Change this to your desired experiment name
+    mlflow.set_experiment(experiment_name)
+    
+    # Ensure the experiment is created and get its ID
+    experiment = mlflow.get_experiment_by_name(experiment_name)
+    if experiment is None:
+        experiment_id = mlflow.create_experiment(experiment_name)
+    else:
+        experiment_id = experiment.experiment_id
+    
+    # Set the tracking URI to point to the running MLflow server
+    mlflow.set_tracking_uri("http://mlflow:5000")
+    
+    with mlflow.start_run(experiment_id=experiment_id):
+        mlflow.sklearn.log_model(model, "linear_regression_model")
+        mlflow.log_param("intercept", model.intercept_)
+        
+        # Save the DictVectorizer
+        dv_path = "dict_vectorizer.pkl"
+        joblib.dump(dv, dv_path)
+        mlflow.log_artifact(dv_path)
+
+    return data```
+
 
 ## Submit the results
 

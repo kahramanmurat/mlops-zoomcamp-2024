@@ -187,7 +187,7 @@ What's the intercept of the model?
 Hint: print the `intercept_` field in the code block
 
 - 21.77
-- 24.77
+- 24.77 - correct
 - 27.77
 - 31.77
 
@@ -299,14 +299,13 @@ Find the logged model, and find MLModel file. What's the size of the model? (`mo
 
 * 14,534
 * 9,534
-* 4,534
+* 4,534 - correct
 * 1,534
 
 > Note: typically we do two last steps in one code block 
 
 Answer:
-```4534
-```
+```4,534```
 
 
 ## Submit the results

@@ -308,7 +308,8 @@ Answer:
 ```4,534```
 
 Code:
-```import pandas as pd
+```
+import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LinearRegression
 import mlflow
@@ -358,7 +359,8 @@ def export_data(data, *args, **kwargs):
         joblib.dump(dv, dv_path)
         mlflow.log_artifact(dv_path)
 
-    return data```
+    return data
+    ```
 
 
 ## Submit the results

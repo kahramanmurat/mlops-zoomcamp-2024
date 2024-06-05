@@ -191,6 +191,54 @@ Hint: print the `intercept_` field in the code block
 - 27.77
 - 31.77
 
+Answer:
+```24.77```
+
+Code:
+```
+import pandas as pd
+from sklearn.feature_extraction import DictVectorizer
+from sklearn.linear_model import LinearRegression
+
+if 'transformer' not in globals():
+    from mage_ai.data_preparation.decorators import transformer
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+# Model Training Function
+@transformer
+def train_model(data, *args, **kwargs):
+    """
+    Train a linear regression model using the transformed data.
+
+    Args:
+        data: The transformed data from the previous block.
+
+    Returns:
+        tuple: A tuple containing the DictVectorizer and the trained Linear Regression model.
+    """
+
+    # Extract relevant columns for training
+    features = data[['PULocationID', 'DOLocationID']]
+    target = data['duration']
+
+    # Convert the features to a dictionary format suitable for DictVectorizer
+    features_dict = features.to_dict(orient='records')
+
+    # Initialize and fit the DictVectorizer
+    dv = DictVectorizer()
+    X = dv.fit_transform(features_dict)
+
+    # Initialize and train the Linear Regression model
+    model = LinearRegression()
+    model.fit(X, target)
+
+    # Print the intercept of the model
+    print(f"Model intercept: {model.intercept_}")
+
+    return dv, model
+```
+
 ## Question 6. Register the model 
 
 The model is trained, so let's save it with MLFlow.

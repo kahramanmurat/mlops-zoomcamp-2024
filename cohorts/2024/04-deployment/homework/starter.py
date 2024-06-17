@@ -3,11 +3,19 @@
 
 import pickle
 import pandas as pd
+import argparse
 
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Predict taxi trip durations.')
+parser.add_argument('--year', type=int, required=True, help='Year of the data')
+parser.add_argument('--month', type=int, required=True, help='Month of the data')
+args = parser.parse_args()
+
+year = args.year
+month = args.month
 
 with open('model.bin', 'rb') as f_in:
     dv, model = pickle.load(f_in)
-
 
 categorical = ['PULocationID', 'DOLocationID']
 
@@ -23,30 +31,25 @@ def read_data(filename):
     
     return df
 
-df = read_data('../data/yellow_tripdata_2023-03.parquet')
+# Read data for the specified year and month
+data_file = f'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{year:04d}-{month:02d}.parquet'
+df = read_data(data_file)
 
 # Create ride_id column
-year = 2023
-month = 3
 df['ride_id'] = f'{year:04d}/{month:02d}_' + df.index.astype('str')
-
 
 # Prepare the data for prediction
 dicts = df[categorical].to_dict(orient='records')
 X_val = dv.transform(dicts)
 y_pred = model.predict(X_val)
 
-
-std_pred_duration = y_pred.std()
-print(f'Standard deviation of predicted duration: {std_pred_duration}')
+# Print the mean predicted duration
+mean_pred_duration = y_pred.mean()
+print(f'Mean predicted duration: {mean_pred_duration}')
 
 # Create result dataframe
 df_result = pd.DataFrame({'ride_id': df['ride_id'], 'predicted_duration': y_pred})
 
-#Save result dataframe as parquet file
-output_file = 'result_2023-03.parquet'
+# Save result dataframe as parquet file
+output_file = f'result_{year:04d}-{month:02d}.parquet'
 df_result.to_parquet(output_file, engine='pyarrow', compression=None, index=False)
-
-
-
-

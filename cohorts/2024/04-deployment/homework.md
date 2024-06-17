@@ -19,8 +19,9 @@ What's the standard deviation of the predicted duration for this dataset?
 * 12.28
 * 18.28
 
->Answer:
+>Answer: 6.247
 
+Code:
 ```python
 std_pred_duration = y_pred.std()
 print(f'Standard deviation of predicted duration: {std_pred_duration}')

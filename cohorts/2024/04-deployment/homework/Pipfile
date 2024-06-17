@@ -7,9 +7,12 @@ name = "pypi"
 scikit-learn = "==1.0.2"
 pandas = "*"
 pyarrow = "*"
+numpy = "==1.21.6"
+boto3 = "*"
+urllib3 = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.9"
-python_full_version = "3.9.19"
+python_version = "3.10.13"
+

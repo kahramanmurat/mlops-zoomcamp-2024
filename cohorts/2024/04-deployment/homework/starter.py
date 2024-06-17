@@ -4,15 +4,19 @@
 import pickle
 import pandas as pd
 import argparse
+import boto3
+import os
 
 # Parse command line arguments
 parser = argparse.ArgumentParser(description='Predict taxi trip durations.')
 parser.add_argument('--year', type=int, required=True, help='Year of the data')
 parser.add_argument('--month', type=int, required=True, help='Month of the data')
+parser.add_argument('--s3-bucket', type=str, required=True, help='S3 bucket to upload the result')
 args = parser.parse_args()
 
 year = args.year
 month = args.month
+s3_bucket = args.s3_bucket
 
 with open('model.bin', 'rb') as f_in:
     dv, model = pickle.load(f_in)
@@ -53,3 +57,10 @@ df_result = pd.DataFrame({'ride_id': df['ride_id'], 'predicted_duration': y_pred
 # Save result dataframe as parquet file
 output_file = f'result_{year:04d}-{month:02d}.parquet'
 df_result.to_parquet(output_file, engine='pyarrow', compression=None, index=False)
+
+# Upload the file to S3
+s3 = boto3.client('s3')
+s3_file_key = f'results/{output_file}'
+s3.upload_file(output_file, s3_bucket, s3_file_key)
+
+print(f'File uploaded to s3://{s3_bucket}/{s3_file_key}')

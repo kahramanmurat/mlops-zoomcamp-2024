@@ -61,12 +61,17 @@ What's the size of the output file?
 __Note:__ Make sure you use the snippet above for saving the file. It should contain only these two columns. For this question, don't change the
 dtypes of the columns and use `pyarrow`, not `fastparquet`. 
 
+> Answer: 68M ~ 66M
 
 ## Q3. Creating the scoring script
 
 Now let's turn the notebook into a script. 
 
 Which command you need to execute for that?
+
+> Answer: ```bash
+jupyter nbconvert --to script starter.ipynb
+``` 
 
 
 ## Q4. Virtual environment

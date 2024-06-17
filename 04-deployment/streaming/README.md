@@ -17,8 +17,8 @@ Links
 
 
 ```bash
-KINESIS_STREAM_INPUT=ride_events
-aws kinesis put-record \
+KINESIS_STREAM_INPUT=ride-events
+sudo aws kinesis put-record \
     --stream-name ${KINESIS_STREAM_INPUT} \
     --partition-key 1 \
     --data "Hello, this is a test."
@@ -46,7 +46,7 @@ Record example
 Sending this record
 
 ```bash
-aws kinesis put-record \
+sudo aws kinesis put-record \
     --stream-name ${KINESIS_STREAM_INPUT} \
     --partition-key 1 \
     --data '{

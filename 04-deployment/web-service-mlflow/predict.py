@@ -1,13 +1,19 @@
+from dotenv import load_dotenv
 import os
 import pickle
 
 import mlflow
 from flask import Flask, request, jsonify
 
+load_dotenv()
+
+aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
+aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
+aws_default_region = os.getenv('AWS_DEFAULT_REGION')
 
 RUN_ID = os.getenv('RUN_ID')
 
-logged_model = f's3://mlflow-models-alexey/1/{RUN_ID}/artifacts/model'
+logged_model = f's3://mlflow-models-mkahraman/1/{RUN_ID}/artifacts/model'
 # logged_model = f'runs:/{RUN_ID}/model'
 model = mlflow.pyfunc.load_model(logged_model)
 

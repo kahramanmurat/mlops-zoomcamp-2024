@@ -69,7 +69,9 @@ Now let's turn the notebook into a script.
 
 Which command you need to execute for that?
 
-> Answer: ```bash
+> Answer: 
+
+```bash
 jupyter nbconvert --to script starter.ipynb
 ``` 
 

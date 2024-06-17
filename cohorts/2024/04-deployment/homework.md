@@ -177,6 +177,10 @@ output_file = f'result_{year:04d}-{month:02d}.parquet'
 df_result.to_parquet(output_file, engine='pyarrow', compression=None, index=False)
 ```
 
+```bash
+python starter.py  --year 2023 --month 4
+```
+
 
 ## Q6. Docker container 
 
